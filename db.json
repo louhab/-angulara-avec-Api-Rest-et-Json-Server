@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "label": "learn angular 2",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "label": "dkdla",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "label": "klddzmlsk",
+      "completed": false
+    }
+  ]
+}

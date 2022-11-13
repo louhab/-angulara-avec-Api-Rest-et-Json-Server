@@ -1,0 +1,61 @@
+<div class="row my-4">
+    <div class="col-md-6">
+        <h3>List of tasks</h3>
+    </div>
+    <div class="col-md-6 text-right">
+        <button class="btn btn-dark btn-sm" (click)=" showForm = !showForm">
+            <i class="fa fa-plus"></i> New Task
+        </button>
+    </div>
+</div>
+<div class="row" *ngIf="showForm">
+    <div class="col-md-10 mx-auto my-4">
+        <div class="form group">
+            <label for="label"></label>
+            <input  [(ngModel)]="myTask.label" id="label" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-check my-2">
+      <label class="form-check-label">
+        <input [(ngModel)]="myTask.completed"  type="checkbox" class="form-check-input"  value="checkedValue">
+        Completed
+      </label>
+    </div>
+    <button *ngIf="!editForm" (click)="persistTask()" class="btn btn-success btn-block button-block mx-auto" style="width:50%"> 
+        <i class="fas fa-paper-plane"></i> New Task
+    </button>
+</div>
+<div *ngIf="editForm" class="row my-2">
+    <button (click)="updateTask()" class="btn btn-warning btn-block button-block mx-auto" style="width:50%"> 
+        <i class="fas fa-refresh"></i> Update Task
+    </button>
+</div>
+<div class="row">
+    <div class="col-md-6 my-4">
+        <h3>List of Tasks</h3>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <input (keyup)="searchTask()" [(ngModel)]="search" type="text" class="form-control my-4" placeholder="Search ....">
+    <ul class="list-group">
+        <li *ngFor="let task of tasks " class="list-group-item d-flex justify-content-between align-items-center">
+            <button (click)="editTask(task)" class="btn btn-warning btn-sm">
+                <i class="fas fa-pencil"></i>
+            </button>  
+            <h6>{{task.label}}</h6>
+             <span
+              (click)="togleCompleted(task)"
+               class="badge-pill badge badge-info"
+               
+               >
+                {{task.completed}}
+            </span>
+            <button (click)="deleteTask(task.id)" class="btn btn-dark btn-sm">
+                <i class="fas fa-trash"></i>
+            </button>
+
+        </li>
+    </ul>
+  </div>
+</div>
